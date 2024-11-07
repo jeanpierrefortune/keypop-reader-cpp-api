@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - doxygen
+  workflow_dispatch:  # Allows for manual trigger
 
 jobs:
   publish-doc-snapshot:
