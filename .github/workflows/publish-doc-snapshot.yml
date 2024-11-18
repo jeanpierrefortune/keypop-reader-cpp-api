@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-      - doxygen
-  workflow_dispatch:  # Allows for manual trigger
+  workflow_dispatch:
 
 jobs:
   publish-doc-snapshot:
@@ -13,26 +12,30 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code from ${{ github.repository }}/${{ github.ref }}
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Make scripts executable
-        run: chmod +x ./.github/scripts/*.sh
-      - name: Patch Doxyfile
-        working-directory: .
-        run: ./.github/scripts/patch_doxyfile.sh
-      - name: Generate project documentation with Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9.2
+
+      - name: Extract repository information
+        id: repo-info
+        shell: bash
+        run: |
+          {
+            echo "repo_name=${GITHUB_REPOSITORY#*/}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Generate and prepare documentation
+        uses: jeanpierrefortune/keypop-action-docs/doxygen@v1
         with:
-          working-directory: .github/doxygen/
-          doxyfile-path: ./Doxyfile
-      - name: Prepare Doxygen doc page locally
-        working-directory: .
-        run: ./.github/scripts/prepare_doxygen.sh
-      - name: Deploy Doxygen documentation to gh-pages
+          repo-name: ${{ steps.repo-info.outputs.repo_name }}
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./${{ github.event.repository.name }}
           enable_jekyll: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'docs: update snapshot documentation'

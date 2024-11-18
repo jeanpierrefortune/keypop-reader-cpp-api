@@ -1,0 +1,22 @@
+name: Trigger Documentation Update
+
+on:
+  workflow_run:
+    workflows: ["Publish API documentation (snapshot)"]
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  checks: write
+
+jobs:
+  notify-doc-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch Event
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{GITHUB_REPOSITORY_OWNER}}/keypop-doc
+          event-type: update-submodules
