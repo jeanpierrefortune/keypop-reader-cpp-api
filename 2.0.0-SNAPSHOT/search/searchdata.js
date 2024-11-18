@@ -3,10 +3,11 @@ var indexSectionsWithContent =
   0: "abcdefgiklmnoprstu~",
   1: "bciors",
   2: "k",
-  3: "bciors",
+  3: "bcimors",
   4: "acdefgioprs~",
   5: "dfnt",
-  6: "acflmnprsu"
+  6: "acflmnprsu",
+  7: "k"
 };
 
 var indexSectionNames =
@@ -17,7 +18,8 @@ var indexSectionNames =
   3: "files",
   4: "functions",
   5: "enums",
-  6: "enumvalues"
+  6: "enumvalues",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -28,6 +30,7 @@ var indexSectionLabels =
   3: "Files",
   4: "Functions",
   5: "Enumerations",
-  6: "Enumerator"
+  6: "Enumerator",
+  7: "Pages"
 };
 

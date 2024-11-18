@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Keypop Reader C++ API 2.0.0: Main Page</title>
+<title>Keypop Reader C++ API 2.0.0: Keypop Reader C++ API Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,10 +63,58 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Keypop Reader C++ API 2.0.0 Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Keypop Reader C++ API Documentation </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="overview"></a>
+Overview</h1>
+<p >The Keypop Reader C++ API defines interfaces for reader communication aligned with the <a href="https://terminal-api.calypsonet.org/specifications/reader-layer/reader-api/">Terminal Reader specifications</a> from the Calypso Networks Association. This C++ interface provides a port of the reference <a href="https://github.com/eclipse-keypop/keypop-reader-java-api">Keypop Reader Java API</a>.</p>
+<h1><a class="anchor" id="architecture"></a>
+Architecture &amp; Components</h1>
+<h2><a class="anchor" id="basic_reader"></a>
+Basic Reader Operations</h2>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1_card_reader.html">keypop::reader::CardReader</a> Core interface for basic card reader operations and state</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1_configurable_card_reader.html">keypop::reader::ConfigurableCardReader</a> Extended interface for configurable card readers with protocol management</li>
+</ul>
+<h2><a class="anchor" id="selection_management"></a>
+Card Selection Management</h2>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1_card_selection_manager.html">keypop::reader::selection::CardSelectionManager</a> Service for preparing and executing card selection scenarios</li>
+<li>keypop::reader::selection::CardSelector Common card filtering interface for selection process</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1_card_selection_result.html">keypop::reader::selection::CardSelectionResult</a> Container for card selection operation results</li>
+</ul>
+<h2><a class="anchor" id="observation"></a>
+Card Reader Observation</h2>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1_observable_card_reader.html">keypop::reader::ObservableCardReader</a> Interface for observable reader features and card detection</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1_card_reader_event.html">keypop::reader::CardReaderEvent</a> Card insertion/removal event information</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1spi_1_1_card_reader_observer_spi.html">keypop::reader::spi::CardReaderObserverSpi</a> Interface for card reader event observation</li>
+</ul>
+<h2><a class="anchor" id="iso_support"></a>
+ISO Card Support</h2>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1_iso_card_selector.html">keypop::reader::selection::IsoCardSelector</a> Selection filters for ISO 7816-4 cards</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1spi_1_1_iso_smart_card.html">keypop::reader::selection::spi::IsoSmartCard</a> Interface representing selected ISO 7816-4 cards</li>
+</ul>
+<h2><a class="anchor" id="extensions_support"></a>
+Extension Support</h2>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1spi_1_1_card_selection_extension.html">keypop::reader::selection::spi::CardSelectionExtension</a> SPI for card-specific selection extensions</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1spi_1_1_smart_card.html">keypop::reader::selection::spi::SmartCard</a> Base interface for smart card representation</li>
+</ul>
+<h1><a class="anchor" id="exceptions"></a>
+Exception Handling</h1>
+<p >The API implements the following exception hierarchy:</p>
+<ul>
+<li><a class="el" href="classkeypop_1_1reader_1_1_card_communication_exception.html">keypop::reader::CardCommunicationException</a> Card communication failure handling</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1_reader_communication_exception.html">keypop::reader::ReaderCommunicationException</a> <br  />
+ Reader communication failure handling</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1_reader_protocol_not_supported_exception.html">keypop::reader::ReaderProtocolNotSupportedException</a> Unsupported protocol error handling</li>
+<li><a class="el" href="classkeypop_1_1reader_1_1selection_1_1_invalid_card_response_exception.html">keypop::reader::selection::InvalidCardResponseException</a> Invalid card response handling during selection </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
